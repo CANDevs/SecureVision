@@ -1,5 +1,5 @@
 from flask import Flask
-from flask_restful import Resource, Api
+# from flask_restful import Resource, Api
 import os
 from flask import Flask, render_template, request, json
 from numpy import result_type
@@ -7,7 +7,7 @@ from flask_cors import CORS
 from API.util import predict, save_map, image_loader
 import base64
 app = Flask(__name__)
-api = Api(app)
+# api = Api(app)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 1
 CORS(app)
 

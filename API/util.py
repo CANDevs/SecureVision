@@ -1,3 +1,4 @@
+from math import ceil
 import torch
 from torch import nn
 from models.CrowdCounter import CrowdCounter
@@ -125,7 +126,7 @@ def predict(dataset, image, model):
         pred_time = time.time() - start_time
 
     pred_map = pred_map.cpu().data.numpy()[0, 0, :, :]
-    pred = np.sum(pred_map) / 100.0
+    pred = ceil(np.sum(pred_map) / 100.0)
     pred_map = pred_map / np.max(pred_map + 1e-20)
 
     return pred_map, pred, device, pred_time
