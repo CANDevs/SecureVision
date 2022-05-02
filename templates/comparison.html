@@ -1,0 +1,22 @@
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/comparison.css') }}">
+{% endblock head %}
+
+{% block body %}
+
+<div class="comparison">
+
+    <div class="comparison-2">
+        <div class="content">
+            <label id="pred_label">pred: </label>
+            <label id="pred_txt"> 0 </label>
+
+            <br />
+
+            <img id="pred_img" src="{{ url_for('static', filename='default.png') }}" alt="density map">
+        </div>
+    </div>
+
+</div>
+
+{% endblock body %}
