@@ -95,7 +95,7 @@ def get_model_filename(model_name):
 
     return model_path
 
-def predict(dataset, image, model):
+def predict(image, model):
     # device = "cuda" if torch.cuda.is_available() else "cpu"
     device = "cpu"
     torch.backends.cudnn.benchmark = True
