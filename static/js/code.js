@@ -21,12 +21,13 @@ const predict = () => {
     if (
          !model.value
     ) {
-        console.log('Errori nella compilazione!')
+        console.log('error!')
         return
     }
 
     data = {
         model: model.value,
+        image: './static/datasets/SHHB/2.jpg',
     }
 
     options = {
