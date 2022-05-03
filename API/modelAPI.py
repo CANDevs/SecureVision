@@ -12,9 +12,7 @@ parser.add_argument('image')
 class Model(Resource):
     def post(self):
         args = parser.parse_args()
-        with open("./static/datasets/SHHB/2.jpg", "rb") as imageFile:
-            str_byte = base64.b64encode(imageFile.read())
-        image = image_loader(str_byte)
+        image = image_loader(args['image'])
         model = args['model']
 
         pred_map, pred_cnt, device, pred_time = predict(image, model)
