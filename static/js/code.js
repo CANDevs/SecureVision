@@ -6,10 +6,6 @@ model = document.getElementById('models') // current selected model
 pred_txt = document.getElementById('pred_txt') // label that show the predicted count
 pred_img = document.getElementById('pred_img') // predicted density map
 
-slider = document.getElementById('slider') // slider component
-slider_imgs = document.querySelectorAll('#slider img') // current selected dataset images
-
-
 // ip address
 url_address = ''
 
@@ -51,7 +47,7 @@ const predict = () => {
             pred_time = parseFloat(pred_time).toFixed(4)
 
             pred_txt.innerHTML = `${pred_cnt}, took ${pred_time} seconds on ${device}`
-            pred_img.src = [url_address, 'static/map.jpg'].join('/')
+            pred_img.src = [url_address, 'static/map.jpg?'].join('/')  + new Date().getTime()
             /*window.location.href = "http://localhost:5000/predict/" + res;*/
         })
         .catch(err => console.log(err))

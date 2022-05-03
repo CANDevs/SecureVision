@@ -9,3 +9,6 @@ numpy
 scipy
 flask
 flask-cors
+opencv_python
+flask_restful
+PIL

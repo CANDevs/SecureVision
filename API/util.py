@@ -14,7 +14,7 @@ import cv2
 
 def image_loader(byte_array):
     byte_array = base64.b64decode(byte_array)
-    return np.array(Image.open(BytesIO(byte_array)))
+    return Image.open(BytesIO(byte_array))
 
 
 def initialize_weights(models):
@@ -100,7 +100,6 @@ def predict(image, model):
     device = "cpu"
     torch.backends.cudnn.benchmark = True
 
-    # img = Image.open('./' + image)
     img = image
     net = CrowdCounter(model).to(device)
     model_path = 'static/models/' + get_model_filename(model)
@@ -113,9 +112,9 @@ def predict(image, model):
     img_transform = standard_transforms.Compose(
         [standard_transforms.ToTensor(), standard_transforms.Normalize(*mean_std)]
     )
-    # img = remove_transparency(img) 
-    # if img.mode == 'L':
-    #     img = img.convert('RGB')
+    img = remove_transparency(img) 
+    if img.mode == 'L':
+        img = img.convert('RGB')
     img = img_transform(img)
 
     with torch.no_grad():
