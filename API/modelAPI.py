@@ -12,7 +12,6 @@ parser.add_argument('image')
 class Model(Resource):
     def post(self):
         args = parser.parse_args()
-        print(args)
         with open(args['image'], "rb") as imageFile:
             str_byte = base64.b64encode(imageFile.read())
         image = image_loader(str_byte)
