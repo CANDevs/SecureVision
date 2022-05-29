@@ -1,9 +1,10 @@
 from flask import Blueprint
 from flask_restful import Resource, Api, reqparse
-from API.util import predict, save_map, image_loader ,get_frame
+from API.util import predict, save_map, image_loader, get_frame
 import base64
 from PIL import Image
-api_bp = Blueprint('modelapi',__name__)
+
+api_bp = Blueprint('modelapi', __name__)
 api_model = Api(api_bp)
 parser = reqparse.RequestParser()
 parser.add_argument('model')
@@ -13,8 +14,7 @@ parser.add_argument('video_url')
 parser.add_argument('secs')
 parser.add_argument('new_request')
 
-
-
+gen : any = None
 class Model_Image(Resource):
     def post(self):
         args = parser.parse_args()
@@ -32,26 +32,35 @@ class Model_Image(Resource):
         }
         return res, 200
 
+
 class Model_Video(Resource):
-    gen : any = None
+
+
     def post(self):
+        global gen
         args = parser.parse_args()
-        print("video",args)
+        print("video", args)
         model = args['model']
         hasFrames = True
-        if args['new_request']:
-            self.gen = get_frame(args['video_url'],args['secs'])
+        print(type(args['new_request']))
+        if (args['new_request']) == 'True':
+            print("hell yea")
+            gen = get_frame(args['video_url'], args['secs'])
 
-        hasFrames,image = next(self.gen)
+        hasFrames, image = next(gen)
         image = Image.fromarray(image)
         pred_map, pred_cnt, device, pred_time = predict(image, model)
         save_map(pred_map)
         res = {
-        'pred_cnt': pred_cnt,
-        'pred_time': pred_time,
-        'device': device,
-        'next_frame': hasFrames,
+            'pred_cnt': pred_cnt,
+            'pred_time': pred_time,
+            'device': device,
+            'next_frame': True,
+            'new_request': False,
         }
+        print(res)
         return res, 200
+
+
 api_model.add_resource(Model_Image, '/predict')
 api_model.add_resource(Model_Video, '/predict_video')
