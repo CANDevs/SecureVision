@@ -4,19 +4,25 @@
 
 {% block body %}
 
-<div class="comparison">
 
-    <div class="comparison-2">
+
+    <div style = "display: flex; justify-content: center">
+        <label id="pred_label" >pred: </label>
+        <label id="pred_txt" > 0 </label>
+    </div>
+    <br>
+    <br>
+    <div class="comparison-2 "  >
         <div class="content">
-            <label id="pred_label">pred: </label>
-            <label id="pred_txt"> 0 </label>
 
-            <br />
+            <br>
 
-            <img id="pred_img" src="{{ url_for('static', filename='default.png') }}" alt="density map">
+            <div >
+                <img id="pred_img" src="{{ url_for('static', filename='default.png') }}" alt="density map">
+            </div>
         </div>
     </div>
 
-</div>
+
 
 {% endblock body %}

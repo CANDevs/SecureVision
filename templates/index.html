@@ -2,9 +2,11 @@
 
 {% block body %}
 
-    <div class="container">
-    
-        <h1>{{ title }}</h1>
+
+<div class="navbar navbar-expand-lg navbar-dark bg-dark" style="width: 100%;">
+    <h1  style = "color: white">{{ title }}</h1>
+</div>
+<div class="container">
 
         <!-- <label for="datasets">Dataset:</label>
 
@@ -18,21 +20,22 @@
         </select> -->
 
         <br />
-
-        <label for="models">Model:</label>
-
-        <select name="models" id="models">
-            <option value="alexnet">AlexNet</option>
-            <option value="vgg">VGG</option>
-            <option value="vgg_decoder">VGG_Decoder</option>
-            <option value="resnet50">ResNet50</option>
-            <option value="resnet101">ResNet101</option>
-            <option value="sfcn+">SFCN+</option>
-            <option value="scar">SCAR</option>
-            <option value="csrnet">CSRNet</option>
-            <option value="sanet">SANet</option>
-            <option value="mcnn">MCNN</option>
-        </select>
+        
+        <div class="card card-body" style="width: 18rem;">
+            <label  for="models">Model:</label>
+            <select class="btn btn-info dropdown-toggle" style=" display:flex;"name="models" id="models">
+                <option value="alexnet">AlexNet</option>
+                <option value="vgg">VGG</option>
+                <option value="vgg_decoder">VGG_Decoder</option>
+                <option value="resnet50">ResNet50</option>
+                <option value="resnet101">ResNet101</option>
+                <option value="sfcn+">SFCN+</option>
+                <option value="scar">SCAR</option>
+                <option value="csrnet">CSRNet</option>
+                <option value="sanet">SANet</option>
+                <option value="mcnn">MCNN</option>
+            </select>
+        </div>
 
         <br />
         <br />
@@ -41,24 +44,29 @@
 
         <br />
         <br />
-       <input type="file" id="file-input" />
-<button id="read-button">Read File</button>
-<pre id="file-contents"></pre>
+       <input class="btn btn-success" type="file" id="file-input" />
+<!-- <button id="read-button">Read File</button>
+<pre id="file-contents"></pre> -->
+        <br><br>
+        <div class="btn-group">
+            <input type="button" class="btn btn-outline-secondary" style="margin-left: 0.5em"id="pred_btn" value="predict"/>
+            <input type="button" class="btn btn-outline-secondary" style="margin-left: 0.5em"id="pred_video_btn" value="predict_video"/>
+            <input type="button" class="btn btn-outline-secondary" style="margin-left: 0.5em"id="stop_btn" value="stop video"/>
+        </div>
 
-        <input type="button" id="pred_btn" value="predict"/><input type="button" id="pred_video_btn" value="predict_video"/>
-        <input type="button" id="stop_btn" value="stop video"/>
-
-        <br />
-        <br />
-
-        {% include "comparison.html" %}
-
-        <br />
-        <br />
         <br />
         <br />
 
     </div>
+        <div >
+            {% include "comparison.html" %}
+        </div>
+
+        <br />
+        <br />
+        <br />
+        <br />
+
 
     <script src="{{ url_for('static', filename='js/code.js') }}"></script>
 
