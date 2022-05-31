@@ -18,7 +18,7 @@ def add_header(response):
 
 @app.route('/')
 def home():
-    title = 'Crowd Counting DEMO'
+    title = 'Secure Vision'
     return render_template('index.html', title=title)
 
 if __name__ == '__main__':
