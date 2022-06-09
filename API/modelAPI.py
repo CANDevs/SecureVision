@@ -39,12 +39,9 @@ class Model_Video(Resource):
     def post(self):
         global gen
         args = parser.parse_args()
-        print("video", args)
         model = args['model']
         hasFrames = True
-        print(type(args['new_request']))
         if (args['new_request']) == 'True':
-            print("hell yea")
             gen = get_frame(args['video_url'], args['secs'])
 
         hasFrames, image = next(gen)
@@ -58,7 +55,6 @@ class Model_Video(Resource):
             'next_frame': True,
             'new_request': False,
         }
-        print(res)
         return res, 200
 
 

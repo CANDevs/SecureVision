@@ -17,11 +17,8 @@ def image_loader(byte_array):
     return Image.open(BytesIO(byte_array))
 
 def get_frame(filename, secs):
-    print(filename,secs)
     cam = cv2.VideoCapture(filename)
-    print("cam")
     cam.set(cv2.CAP_PROP_POS_MSEC,int(secs)*1000)
-    print("cam set")
     hasFrames = True
     while hasFrames:
         hasFrames,image = cam.read()
@@ -55,7 +52,7 @@ def real_init_weights(m):
             for mini_m in m.children():
                 real_init_weights(mini_m)
         else:
-            print(m)
+            pass
 
 def weights_normal_init(*models):
     for model in models:
@@ -111,7 +108,6 @@ def get_model_filename(model_name):
     return model_path
 
 def predict(image, model):
-    print(type(image))
     device = "cuda" if torch.cuda.is_available() else "cpu"
     torch.backends.cudnn.benchmark = True
 
