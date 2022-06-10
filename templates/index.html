@@ -43,16 +43,16 @@
 <pre id="file-contents"></pre> -->
         <br><br>
         <div class="btn-group">
-            <input type="button" class="btn btn-secondary" id="pred_btn" value="predict"/>
-            <input type="button" class="btn btn-secondary" style="margin-left: 0.5em"id="pred_video_btn" value="predict_video"/>
-            <input type="button" class="btn btn-secondary" style="margin-left: 0.5em"id="stop_btn" value="stop video"/>
+            <a class="btn btn-secondary" id="pred_btn" href="{{ url_for('compare')}}">Compare Models</a>
+            <input type="button" class="btn btn-secondary" style="margin-left: 0.5em" id="pred_video_btn" value="Predict Video"/>
+            <input type="button" class="btn btn-secondary" style="margin-left: 0.5em" id="stop_btn" value="Stop Video"/>
         </div>
 
         
 
     </div>
         <div >
-            {% include "comparison.html" %}
+            {% include "video.html" %}
         </div>
 
         <br />
