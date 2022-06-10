@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+
+<div class="navbar navbar-expand-lg navbar-dark bg-dark" style="width: 100%;">
+    <h1 style="color: white">{{ title }}</h1>
+</div>
+<div class="container">
+
+    <div class="card card-body" style="display: flex;width: 18rem;">
+
+        <label for="datasets">Dataset:</label>
+        <select select class="btn btn-info dropdown-toggle" name="datasets" id="datasets">
+            <option value="SHHB">SHHB</option>
+            <option value="SHHA">SHHA</option>
+            <option value="UCC-CF-50">UCC-CF-50</option>
+            <option value="QNRF">QNRF</option>
+            <option value="NPWU-CROWD">NPWU-CROWD</option>
+            <option value="JHU-CROWD">JHU-CROWD</option>
+        </select>
+
+        <label for="models">Model:</label>
+        <select select class="btn btn-info dropdown-toggle" name="models" id="models">
+            <option value="mcnn">MCNN</option>
+            <option value="alexnet">AlexNet</option>
+            <option value="vgg">VGG</option>
+            <option value="vgg_decoder">VGG_Decoder</option>
+            <option value="resnet50">ResNet50</option>
+            <option value="resnet101">ResNet101</option>
+            <option value="sfcn+">SFCN+</option>
+            <option value="scar">SCAR</option>
+            <option value="csrnet">CSRNet</option>
+            <option value="sanet">SANet</option>
+        </select>
+    </div>
+
+    <br />
+    <br />
+
+    {% include "slider.html" %}
+
+    <br />
+    <br />
+
+    <input type="button" class="btn btn-secondary" id="pred_btn" value="Predict" />
+
+    <br />
+    <br />
+
+    {% include "images.html" %}
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+</div>
+
+<script src="{{ url_for('static', filename='js/compare.js') }}"></script>
+
+{% endblock %}

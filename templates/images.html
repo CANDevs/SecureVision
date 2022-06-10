@@ -1,0 +1,33 @@
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/comparison.css') }}">
+{% endblock head %}
+
+{% block body %}
+
+<div class="comparison">
+
+    <div class="comparison-1">
+        <div class="content">
+            <label id="curr_label" style="color: white;">Ground Truth: </label>
+            <label id="curr_txt" style="color: white"> 0 </label>
+
+            <br />
+
+            <img id="curr_image" src="{{ url_for('static', filename='default.png') }}" alt="test image">
+        </div>
+    </div>
+
+    <div class="comparison-2">
+        <div class="content">
+            <label id="pred_label" style="color: white;">Prediction: </label>
+            <label id="pred_txt" style="color: white;"> 0 </label>
+
+            <br />
+
+            <img id="pred_img" src="{{ url_for('static', filename='default.png') }}" alt="density map">
+        </div>
+    </div>
+
+</div>
+
+{% endblock body %}
