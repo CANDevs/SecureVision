@@ -18,7 +18,7 @@ gen : any = None
 class Model_Image(Resource):
     def post(self):
         args = parser.parse_args()
-        with open(args['image'], "rb") as imageFile:
+        with open("."+args['image'], "rb") as imageFile:
             str_byte = base64.b64encode(imageFile.read())
         image = image_loader(str_byte)
         model = args['model']
