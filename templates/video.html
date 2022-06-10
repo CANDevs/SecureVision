@@ -4,36 +4,32 @@
 
 {% block body %}
 
-
-
-<div style="display: flex; justify-content: center; color: white; font-weight: bold;">
-    <p id="pred_label">pred: </p>
+<div style="display: flex; justify-content: center; color: white; font-weight: bold; font-size: 1.5em">
+    <p id="pred_label">Prediction: </p>
     <p id="pred_txt"> 0 </p>
-    
+    <p style="color: red; margin-left: 1.5em; display: none;" id="alert_msg">Alert!!</p>
 </div>
+
 <div class="slidecontainer" style="display: flex; justify-content: center; color: white; font-weight: bold;">
     <label for="myRange">Threshold</label>
     <input type="range" min="1" max="5000" value="2500" class="slider" id="myRange">
     <p id="demo"></p>
+    
 </div>
 
 <div style=" display: flex; justify-content: center">
 
     <div class="comparison-2 ">
         <div class="content">
-
-
-
             <div>
                 <img id="pred_img" src="{{ url_for('static', filename='default.png') }}" alt="density map">
                 <br>
-                <img src="{{ url_for('static', filename='scale.jpg') }}" alt="density map"
-                    style="width: 100%;">
+                <img src="{{ url_for('static', filename='scale.jpg') }}" alt="density map" style="width: 100%;">
             </div>
+            
         </div>
+        
     </div>
 </div>
-
-
 
 {% endblock body %}

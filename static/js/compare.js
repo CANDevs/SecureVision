@@ -61,7 +61,7 @@ const getGroundtruth = () => {
         fetch(url)
         .then(res => res.json())
         .then(res => {
-            gt_count.innerHTML = parseFloat(res.human_num).toFixed(4)
+            gt_count.innerHTML = Math.ceil(parseFloat(res.human_num).toFixed(4))
         })
         .catch(err => console.log(err))
     } else {
@@ -127,7 +127,7 @@ const predict = () => {
         .then(res => res.json())
         .then(res => {
             let {pred_cnt, pred_time, device} = res
-            pred_cnt = parseFloat(pred_cnt).toFixed(4)
+            pred_cnt = Math.ceil(parseFloat(pred_cnt).toFixed(4))
             pred_time = parseFloat(pred_time).toFixed(4)
 
             pred_txt.innerHTML = `${pred_cnt}, took ${pred_time} seconds on ${device}`

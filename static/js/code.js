@@ -1,5 +1,6 @@
 pred_btn = document.querySelector('#pred_btn')
 pred_video_btn = document.querySelector('#pred_video_btn')
+alert_label = document.getElementById("alert_msg")
 stop_btn = document.querySelector('#stop_btn')
 var stop_exe = 0
 
@@ -19,45 +20,8 @@ model.selelectedIndex = 0
 // slider initialization
 default_img = [url_address, 'static/default.png'].join('/')
 default_img_name = 'none'
-
-
-const predict = () => {
-    if (
-        !model.value
-    ) {
-        console.log('error!')
-        return
-    }
-
-    data = {
-        model: model.value,
-        image: './static/datasets/SHHB/2.jpg',
-    }
-
-    options = {
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        method: 'post',
-        body: JSON.stringify(data)
-    }
-
-    url = [url_address, 'predict'].join('/')
-    fetch(url, options)
-        .then(res => res.json())
-        .then(res => {
-            console.log(res)
-            let { pred_cnt, pred_time, device } = res
-            pred_cnt = parseFloat(pred_cnt).toFixed(4)
-            pred_time = parseFloat(pred_time).toFixed(4)
-
-            pred_txt.innerHTML = `${pred_cnt}, took ${pred_time} seconds on ${device}`
-            pred_img.src = [url_address, 'static/map.jpg?'].join('/') + new Date().getTime()
-            /*window.location.href = "http://localhost:5000/predict/" + res;*/
-        })
-        .catch(err => console.log(err))
-}
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
 
 function get_response(url, options, data) {
 
@@ -70,18 +34,12 @@ function get_response(url, options, data) {
     if (xhr.status === 200) {
         let result = JSON.parse(xhr.responseText)
         let { pred_cnt, pred_time, device, next_frame } = result
-        pred_cnt = parseFloat(pred_cnt).toFixed(4)
+        pred_cnt = Math.ceil(parseFloat(pred_cnt).toFixed(4))
         pred_time = parseFloat(pred_time).toFixed(4)
-        // console.log(next_frame)
-        // console.log(result)
-
         pred_txt.innerHTML = `${pred_cnt}, took ${pred_time} seconds on ${device}`
-        if(parseInt(pred_cnt) > parseInt(output.innerHTML)) {pred_txt.style.color = "red"; pred_label.style.color = "red";}
-        else {pred_txt.style.color = "green"; pred_label.style.color = "green";}
-        // pred_img.src = [url_address, 'static/map.jpg?'].join('/') + new Date().getTime()
-        /*window.location.href = "http://localhost:5000/predict/" + res;*/
-        // console.log(nextFrame)
-        // result.new_request = false;
+        
+        if(parseInt(pred_cnt) > parseInt(output.innerHTML)) {pred_txt.style.color = "red"; pred_label.style.color = "red"; alert_label.style.display = "block"}
+        else {pred_txt.style.color = "green"; pred_label.style.color = "green"; alert_label.style.display = "none"}
         return result
 
     }
@@ -108,7 +66,6 @@ const predict_video = async () => {
             new_request: result.new_request,
             secs: 1,
         }
-        console.log(data)
         options = {
             headers: {
                 'Accept': 'application/json',
@@ -117,31 +74,8 @@ const predict_video = async () => {
             method: 'post',
             body: JSON.stringify(data)
         }
-        console.log(options)
         result = await get_response(url, options, data)
         pred_img.src = [url_address, 'static/map.jpg?'].join('/') + new Date().getTime()
-        console.log(result)
-
-        // fetch(url, options)
-        //     .then(res => res.json())
-        //     .then(res => {
-        //         console.log(res)
-        //         let { pred_cnt, pred_time, device ,next_frame} = res
-        //         pred_cnt = parseFloat(pred_cnt).toFixed(4)
-        //         pred_time = parseFloat(pred_time).toFixed(4)
-        //         nextFrame = next_frame
-        //
-        //         pred_txt.innerHTML = `${pred_cnt}, took ${pred_time} seconds on ${device}`
-        //         pred_img.src = [url_address, 'static/map.jpg?'].join('/') + new Date().getTime()
-        //         /*window.location.href = "http://localhost:5000/predict/" + res;*/
-        //         console.log(nextFrame)
-        //         data.new_request = false
-        //
-        //     })
-        //     .catch(err => console.log(err))
-        //     .finally(console.log(options.body))
-
-
     }
 }
 
@@ -162,8 +96,7 @@ stop_btn.onclick = e => {
     console.log(stop_exe)
     stop_exe = 1;
 }
-var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
+
 output.innerHTML = slider.value; // Display the default slider value
 
 // Update the current slider value (each time you drag the slider handle)

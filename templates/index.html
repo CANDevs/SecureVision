@@ -4,63 +4,42 @@
 
 
 <div class="navbar navbar-expand-lg navbar-dark bg-dark" style="width: 100%;">
-    <h1  style = "color: white">{{ title }}</h1>
+    <h1 style="color: white">{{ title }}</h1>
 </div>
 <div class="container">
 
-        <!-- <label for="datasets">Dataset:</label>
-
-        <select name="datasets" id="datasets">
-            <option value="SHHB">SHHB</option>
-            <option value="SHHA">SHHA</option>
-            <option value="UCC-CF-50">UCC-CF-50</option>
-            <option value="QNRF">QNRF</option>
-            <option value="NPWU-CROWD">NPWU-CROWD</option>
-            <option value="JHU-CROWD">JHU-CROWD</option>
-        </select> -->
-
-      
-        
-        <div class="card card-body" style="display: flex;width: 18rem;">
-            <label  for="models">Model:</label>
-            <select class="btn btn-info dropdown-toggle" style=" display:flex;"name="models" id="models">
-                <option value="mcnn">MCNN</option>
-                <option value="alexnet">AlexNet</option>
-                <option value="vgg">VGG</option>
-                <option value="vgg_decoder">VGG_Decoder</option>
-                <option value="resnet50">ResNet50</option>
-                <option value="resnet101">ResNet101</option>
-                <option value="sfcn+">SFCN+</option>
-                <option value="scar">SCAR</option>
-                <option value="csrnet">CSRNet</option>
-                <option value="sanet">SANet</option>
-            </select>
-            <br>
-        </div>
-        <!-- <input class="btn btn-success" type="file" id="file-input" style="margin-top: 0.5em;"/> -->
-        
-<!-- <button id="read-button">Read File</button>
-<pre id="file-contents"></pre> -->
-        <br><br>
-        <div class="btn-group">
-            <a class="btn btn-secondary" id="pred_btn" href="{{ url_for('compare')}}">Compare Models</a>
-            <input type="button" class="btn btn-secondary" style="margin-left: 0.5em" id="pred_video_btn" value="Predict Video"/>
-            <input type="button" class="btn btn-secondary" style="margin-left: 0.5em" id="stop_btn" value="Stop Video"/>
-        </div>
-
-        
-
+    <div class="card card-body" style="display: flex;width: 18rem;">
+        <label for="models">Model:</label>
+        <select class="btn btn-info dropdown-toggle" style=" display:flex;" name="models" id="models">
+            <option value="mcnn">MCNN</option>
+            <option value="alexnet">AlexNet</option>
+            <option value="vgg">VGG</option>
+            <option value="vgg_decoder">VGG_Decoder</option>
+            <option value="resnet50">ResNet50</option>
+            <option value="resnet101">ResNet101</option>
+            <option value="sfcn+">SFCN+</option>
+            <option value="scar">SCAR</option>
+            <option value="csrnet">CSRNet</option>
+            <option value="sanet">SANet</option>
+        </select>
+        <br>
     </div>
-        <div >
-            {% include "video.html" %}
-        </div>
 
-        <br />
-        <br />
-        <br />
-        <br />
+    <br><br>
+    <div class="btn-group">
+        <a class="btn btn-secondary" id="pred_btn" href="{{ url_for('compare')}}">Compare Models</a>
+        <input type="button" class="btn btn-secondary" style="margin-left: 0.5em" id="pred_video_btn"
+            value="Predict Video" />
+        <input type="button" class="btn btn-secondary" style="margin-left: 0.5em" id="stop_btn" value="Stop Video" />
+    </div>
 
 
-    <script src="{{ url_for('static', filename='js/code.js') }}"></script>
+
+</div>
+<div>
+    {% include "video.html" %}
+</div>
+
+<script src="{{ url_for('static', filename='js/code.js') }}"></script>
 
 {% endblock %}
