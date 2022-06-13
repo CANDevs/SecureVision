@@ -89,7 +89,6 @@ pred_video_btn.onclick = e => {
     predict_video()
 }
 stop_btn.onclick = e => {
-    console.log(stop_exe)
     stop_exe = 1;
 }
 

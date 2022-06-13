@@ -101,7 +101,7 @@ const predict = () => {
     if (
         !dataset.value || cur_img.src === default_img || !model.value
     ) {
-        console.log('Errori nella compilazione!')
+        console.log('Error!')
         return
     }
 
