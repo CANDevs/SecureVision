@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% set active_page = "about" %}
+{% block body %}
+<div id="content">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/team.css') }}">
+
+    <div class="guide">
+        <div class="title">Our Guide</div>
+        <div class="member">
+            <div class="photo">
+                <img src="{{ url_for('static', filename='images/sirishbhat.jpg') }}" />
+            </div>
+            <div class="name">Mr.Ranganatha K</div>
+            <div class="profession">(Assistant Professor)</div>
+        </div>
+    </div>
+
+    <div class="container-fluid team">
+        <div class="title">Our Team</div>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="member">
+                    <div class="photo">
+                        <img src="{{ url_for('static', filename='images/sirishbhat.jpg') }}" />
+                    </div>
+                    <div class="name">Sirish Bhat</div>
+                    <div class="rollno">(4CB18IS008)</div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="member">
+                    <div class="photo">
+                        <img src="{{ url_for('static', filename='images/sirishbhat.jpg') }}" />
+                    </div>
+                    <div class="name">Chandan Rao</div>
+                    <div class="rollno">(4CB18IS010)</div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="member">
+                    <div class="photo">
+                        <img src="{{ url_for('static', filename='images/sirishbhat.jpg') }}" />
+                    </div>
+                    <div class="name">Thushar Kulal</div>
+                    <div class="rollno">(4CB18IS048)</div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="member">
+                    <div class="photo">
+                        <img src="{{ url_for('static', filename='images/sirishbhat.jpg') }}" />
+                    </div>
+                    <div class="name">Udhbhav U</div>
+                    <div class="rollno">(4CB18IS051)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

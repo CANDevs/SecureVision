@@ -4,8 +4,8 @@ from API.util import predict, save_map, image_loader, get_frame
 import base64
 from PIL import Image
 
-api_bp = Blueprint('modelapi', __name__)
-api_model = Api(api_bp)
+model_bp = Blueprint('modelapi', __name__)
+api_model = Api(model_bp)
 parser = reqparse.RequestParser()
 parser.add_argument('model')
 parser.add_argument('image')

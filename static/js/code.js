@@ -1,4 +1,3 @@
-pred_btn = document.querySelector('#pred_btn')
 pred_video_btn = document.querySelector('#pred_video_btn')
 alert_label = document.getElementById("alert_msg")
 stop_btn = document.querySelector('#stop_btn')
@@ -88,9 +87,6 @@ pred_video_btn.onclick = e => {
     e.preventDefault()
     stop_exe = 0
     predict_video()
-}
-pred_btn.onclick = e => {
-    predict()
 }
 stop_btn.onclick = e => {
     console.log(stop_exe)
