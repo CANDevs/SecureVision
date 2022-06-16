@@ -1,8 +1,7 @@
-from flask import Flask
-from API.modelAPI import model_bp
-from API.dataAPI import data_bp
 from flask import Flask, render_template
 from flask_cors import CORS
+from API.modelAPI import model_bp
+from API.dataAPI import data_bp
 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 1
